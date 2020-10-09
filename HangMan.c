@@ -472,14 +472,6 @@ void setcolor() {
     SetConsoleTextAttribute(hConsole, FOREGROUND_GREEN);
 }
 
-void clearScreen() {
-	#ifdef _WIN32
-		system("cls");
-	#else 
-		system("clear");
-	#endif
-}
-
 // Espera o jogador ler a mensagem:
 void waitRead() { sleep(1); clearScreen(); }
 
@@ -488,3 +480,12 @@ void invalidOption() { printf("\nOpção inválida!\n"); sleep(1); }
 
 // Cumprimenta o jogador:
 void greeting(const char *player_name) { printf("Olá %s, seja bem-vindo!\n", player_name); }
+
+// Limpa a tela com base no OS.
+void clearScreen() {
+	#ifdef _WIN32
+		system("cls");
+	#else 
+		system("clear");
+	#endif
+}
