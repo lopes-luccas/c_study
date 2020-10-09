@@ -16,10 +16,10 @@
 // Consts:
 #define ROBOT 1
 #define PLAYER 0
-#define WORDS_LENGTH 15	
 #define NLETTERS 9
 #define MAX_NAME 50
 #define MAX_KICKS 26
+#define WORDS_LENGTH 15	
 #define ALPHABET "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
 
 // Structs:
