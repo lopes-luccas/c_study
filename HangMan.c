@@ -162,9 +162,7 @@ int vsPlayer() {
 	createPassword();
 	
 	printf("Jogador %s, agora é com você!\n", second_player_name);
-	
 	startGame(PLAYER);
-	
 	winGame()? printTrophy():printf("Derrota!\n");
 	
 //	Dead end:
@@ -179,14 +177,13 @@ int toKick(unsigned *attemps, const unsigned is_robot) {
 	
 //	Commands:
 	++*attemps;
-	
 	printf("%dª Tentativa.\nDigite uma letra: ", *attemps);
 	
 //	Na condição verdadeira o robô quem faz a jogada, senão, o jogador que digita.
 	if(is_robot) {
-		index_alphabet=rand() % strlen(DATA_GAME.alphabet);
+		index_alphabet=rand()%strlen(DATA_GAME.alphabet);
 		kick=DATA_GAME.alphabet[index_alphabet];
-		memmove(&DATA_GAME.alphabet[index_alphabet], &DATA_GAME.alphabet[index_alphabet + 1], strlen(DATA_GAME.alphabet) - index_alphabet);
+		memmove(&DATA_GAME.alphabet[index_alphabet], &DATA_GAME.alphabet[index_alphabet+1], strlen(DATA_GAME.alphabet)-index_alphabet);
 	} else kick=getch();
 	
 //	Verifique se a letra digitada pelo jogador é maiúscula caso contrário não some às tentativa:
@@ -265,16 +262,12 @@ int vsComputer() {
 //	Commands:	
 	strcpy(DATA_GAME.alphabet, ALPHABET);
 	if(option=='1') {
-		int (*p_createPassword_f)()=&createPassword;
-		p_createPassword_f();
+		int (*p_createPassword_f)()=&createPassword; p_createPassword_f();
 		printf("\\(^-^)/: Agora é a minha vez, jogador %s.\n", first_player_name);
-		sleep(1);
-		startGame(ROBOT);
+		sleep(1); startGame(ROBOT);
 	} else {	
 		choiceDifficultLevel(&difficult_level);
-		int (*p_randomPassword_f)();
-		p_randomPassword_f=&randomPassword;
-		(p_randomPassword_f)();
+		int (*p_randomPassword_f)()=&randomPassword; p_randomPassword_f();
 		printf("\\(^-^)/: Jogador %s, agora é a sua vez.\n", first_player_name);
 		startGame(PLAYER);
 	}
