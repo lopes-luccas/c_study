@@ -45,7 +45,7 @@ void printPassword();
 void printDataPlays();
 void printHang(const unsigned erros);
 
-void sSystem();
+void startSystem();
 void startGame(const unsigned is_robot);
 
 void readFirstPlayer();
@@ -81,17 +81,17 @@ const char passwords[WORDS_LENGTH][NLETTERS]={
 //  Functions:
 int main(void) {
 //	System:
-	sSystem();
+	void(*start_system)()=&startSystem; start_system();
+//	startSystem();
 	
 //	Dead end:
 	return EXIT_SUCCESS;
 }
 
 // Utilizando ponteiros de função para inicializar o jogo:
-void sSystem() {
+void startSystem() {
     defaultSettings();
-	int(*p_hangMan_f)()=&hangMan;
-	p_hangMan_f();
+	int(*p_hangMan_f)()=&hangMan; p_hangMan_f();
 }
 
 // Settings:
