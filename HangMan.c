@@ -8,7 +8,10 @@
 #include <string.h>
 #include <unistd.h>
 #include <locale.h>
-#include <windows.h>
+
+#ifdef _WIN32
+	#include <windows.h>
+#endif
 
 // Consts:
 #define ROBOT 1
